@@ -2,8 +2,10 @@
     <NuxtPage />
 </template>
 
-<style scoped>
-
+<style>
+body {
+  background-color: #58787f;
+}
 
 </style>
 
