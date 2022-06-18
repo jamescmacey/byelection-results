@@ -118,6 +118,32 @@ import CandidateTable from '../components/CandidateTable.vue'
 import PlacesTable from '../components/PlacesTable.vue'
 
 export default {
+  head: {
+    title: "Tauranga by-election results — WhereTheyStand",
+    meta: [
+      {name: "twitter:image", content: "https://storage.googleapis.com/wheretheystand-nz/nzpm_app/twitter_2_1.jpeg"},
+      {name: "twitter:card", content: "summary_large_image"},
+      {name: "twitter:image:alt", content: "WhereTheyStand"},
+      {name: "twitter:title", content: "Election results — WhereTheyStand"},
+      {name: "twitter.description", content: "See Tauranga by-election results as they become available."},
+      {name: "og:image:alt", content: "WhereTheyStand"},
+      {name: "og:site_name", content: "WhereTheyStand"},
+      {name: "og:locale", content: "en_NZ"},
+      {name: "og:title", content: "WhereTheyStand"},
+      {name: "og:image", content: "https://storage.googleapis.com/wheretheystand-nz/nzpm_app/twitter_2_1.jpeg"},
+      {name: "og:description", content: "See Tauranga by-election results as they become available."},
+      {charset: "utf-8"},
+      {name: "theme-color", content: "#58787f"}
+    ],
+    link: [
+      {rel: "apple-touch-icon", sizes: "180x180", href: "https://storage.googleapis.com/wheretheystand-nz/nzpm_app/favicons/apple-touch-icon.png"},
+      {rel: "icon", type:"image/png", sizes: "32x32", href: "https://storage.googleapis.com/wheretheystand-nz/nzpm_app/favicons/favicon-32x32.png"},
+      {rel: "icon", type:"image/png", sizes: "16x16", href: "https://storage.googleapis.com/wheretheystand-nz/nzpm_app/favicons/favicon-16x16.png"},
+      {rel: "manifest", href: "https://storage.googleapis.com/wheretheystand-nz/nzpm_app/favicons/site.webmanifest"},
+      {rel: "mask-icon", href: "https://storage.googleapis.com/wheretheystand-nz/nzpm_app/favicons/safari-pinned-tab.svg"},
+      {rel: "shortcut icon", href: "https://storage.googleapis.com/wheretheystand-nz/nzpm_app/favicons/favicon.ico"},
+    ]
+  },
   components: {
     Card,
     CandidateTable,
