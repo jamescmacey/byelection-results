@@ -19,9 +19,25 @@
             </tr>
         </thead>
         <tbody>
-             <PlaceEntry @view-place="viewPlace" v-for="placeId in uniquePlaces" :key="placeId" :placeId="placeId" :results="results.voting_place_results" :config="config" :votingPlaces="votingPlaces">
+             <PlaceEntry @view-place="viewPlace" v-for="placeId in uniquePlaces" :key="placeId" :placeId="placeId" :results="results.voting_place_results" :config="config" :votingPlaces="votingPlaces" type="place">
             </PlaceEntry>
         </tbody>
+    </table>
+    <table v-if="specialPlaces.length" class="table table-sm table-hover table-responsive">
+      <thead>
+        <tr>
+          <th>
+            <h4>Special votes</h4>
+          </th>
+          <th>
+            Results
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <PlaceEntry @view-place="viewPlace" v-for="placeId in specialPlaces" :key="placeId" :placeId="placeId" :results="results.voting_place_results" :config="config" :votingPlaces="votingPlaces" type="special">
+        </PlaceEntry>
+      </tbody>
     </table>
     </div>
     <div v-else>
@@ -66,6 +82,9 @@ export default {
         type: Object
     },
     uniquePlaces: {
+        type: Array
+    },
+    specialPlaces: {
         type: Array
     },
     parties: {

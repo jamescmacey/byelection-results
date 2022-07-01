@@ -16,7 +16,7 @@
            <CandidateTable class="col-12" :candidates="candidates" :parties="parties" :results="results" :config="config"></CandidateTable>
         </div>
         <div class="col-12 col-xl-8">
-          <PlacesTable class="col-12" :config="config" :results="results" :votingPlaces="votingPlaces" :uniquePlaces="uniquePlaces" :candidates="candidates" :parties="parties">
+          <PlacesTable class="col-12" :config="config" :results="results" :votingPlaces="votingPlaces" :uniquePlaces="uniquePlaces" :specialPlaces="specialPlaces" :candidates="candidates" :parties="parties">
 
           </PlacesTable>
           <Card class="col-12 d-lg-none d-xl-none d-md-none text-center">
@@ -181,7 +181,16 @@ export default {
     uniquePlaces () {
       var places = []
       this.results.voting_place_results.forEach(vp => {
-        if(places.indexOf(vp.id) < 0) {
+        if((places.indexOf(vp.id) < 0) && (vp.voting_place_id < 400)) {
+          places.push(vp.id)
+        }
+      });
+      return places
+    },
+    specialPlaces () {
+      var places = []
+      this.results.voting_place_results.forEach(vp => {
+        if((places.indexOf(vp.id) < 0) && (vp.voting_place_id >= 400)) {
           places.push(vp.id)
         }
       });

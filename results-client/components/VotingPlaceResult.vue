@@ -126,8 +126,10 @@ export default {
         return "Election day results only"
       } else if (this.focusPlaceId < 300) {
         return "Advance voting results only"
-      } else {
+      } else if (this.focusPlaceId < 400) {
         return "Mobile voting results only"
+      } else {
+        return "Special votes"
       }
     },
     sortedVotes() {
