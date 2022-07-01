@@ -1,27 +1,34 @@
 <template>
   <tr>
     <td><strong>{{ displayName }}</strong></td> 
-    <td>
+    <td v-if="type == 'place'">
       <span v-if="electionDayResults && electionDayResults.total_issued_ballot_papers > 0">
         <button @click="$emit('view-place',electionDayResults.voting_place_id)" class="btn btn-theme2 btn-sm rounded-0">View results</button>
       </span>
       <span v-else-if="electionDayResults && electionDayResults.total_issued_ballot_papers == 0">Counting</span>
       <span v-else-if="electionDayResults == null">Not open</span>
     </td> 
-    <td>
+    <td v-if="type == 'place'">
       <span v-if="advanceVotingResults && advanceVotingResults.total_issued_ballot_papers > 0">
         <button @click="$emit('view-place',advanceVotingResults.voting_place_id)" class="btn btn-theme2 btn-sm rounded-0">View results</button>
       </span>
       <span v-else-if="advanceVotingResults && advanceVotingResults.total_issued_ballot_papers == 0">Counting</span>
       <span v-else-if="advanceVotingResults == null">Not open</span>
     </td> 
-    <td>
+    <td v-if="type == 'place'">
       <span v-if="mobileResults && mobileResults.total_issued_ballot_papers > 0">
         <button @click="$emit('view-place',mobileResults.voting_place_id)" class="btn btn-theme2 btn-sm rounded-0">View results</button>
       </span>
       <span v-else-if="mobileResults && mobileResults.total_issued_ballot_papers == 0">Counting</span>
       <span v-else-if="mobileResults == null">Not open</span>
     </td> 
+    <td v-if="type == 'special'">
+      <span v-if="specialResults && specialResults.total_issued_ballot_papers > 0">
+        <button @click="$emit('view-place',specialResults.voting_place_id)" class="btn btn-theme2 btn-sm rounded-0">View results</button>
+      </span>
+      <span v-else-if="specialResults && specialResults.total_issued_ballot_papers == 0">Counting</span>
+      <span v-else-if="specialResults == null">Not open</span>
+    </td>
   </tr>
 </template>
 
@@ -49,8 +56,11 @@ export default {
     },
     placeId: {
       type: Number
+    },
+    type: {
+      type: String,
+      default: "place"
     }
-
   },
   computed: {
     displayName() {
@@ -79,6 +89,14 @@ export default {
     },
     mobileResults() {
       var filtered = this.results.filter(c => (c.id == this.placeId && c.voting_place_id < 400 && c.voting_place_id >= 300))
+      if ((filtered.length) > 0) {
+        return filtered[0]
+      } else {
+        return null
+      }
+    },
+    specialResults() {
+      var filtered = this.results.filter(c => (c.id == this.placeId && c.voting_place_id < 500 && c.voting_place_id >= 400))
       if ((filtered.length) > 0) {
         return filtered[0]
       } else {
