@@ -153,7 +153,7 @@ export default {
       electionYear: "2022",
       electionLocationType: "Hamilton West by-election",
       candidatesSortOrder: [],
-      isAlive: false,
+      isAlive: true,
       lastCheckedIsAlive: moment(),
       lastCheckedIsAliveText: "never"
     }
