@@ -74,7 +74,7 @@
           <h2>{{ remainingTime }}</h2>
         </div>
         <div v-else>
-          Results should appear soon. If nothing happens within the next 10 seconds, refresh this page.
+          Thanks for using WhereTheyStand. Unfortunately some technical issues mean that the results won't show up automatically on this site until after the first results have been entered. Once the Electoral Commission issues the first set of results, you can refresh this page and it will automatically update every 30 seconds as normal.
         </div>
       </Card>
     </div>
