@@ -217,6 +217,7 @@ export default {
 
       this.refreshInterval = setInterval(function () {
         if (this.isAlive) {
+          this.getStatics();
           this.getResults();
         }
       }.bind(this), this.refreshIntervalTimeMilliseconds)
