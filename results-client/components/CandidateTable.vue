@@ -50,7 +50,7 @@
         </tbody>
     </table>
     </div>
-    <p class="text-muted"><strong>DNS</strong>: Did not stand in 2020; <strong>*</strong> denotes where the candidate did not stand in 2020, but the candidate's party stood a different candidate and the 2020 candidate's result is shown. </p>
+    <p class="text-muted"><strong>DNS</strong>: Did not stand in 2020; <strong>*</strong> denotes where the candidate did not stand in 2020, but the candidate's party stood a different candidate and the 2020 candidate's result is shown; <strong>†</strong> denotes where the candidate stood in 2020 for a different party than in this election.</p>
     
   </Card>
 </template>
@@ -63,6 +63,7 @@
 
 #footer-row {
     outline: thin solid ;
+    outline-offset: -2px;
 }
 
 #header-2020 {

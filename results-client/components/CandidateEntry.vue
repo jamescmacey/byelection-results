@@ -74,11 +74,14 @@ export default {
     lastElection() {
       if (this.result.id in this.config.previous_results) {
         var previous_result = this.config.previous_results[this.result.id]
+        var result_value = previous_result.percent_of_valid.toFixed(1) + "%"
         if (previous_result.was_different_candidate) {
-          return previous_result.percent_of_valid.toFixed(1) + "%" + "*"
-        } else {
-          return previous_result.percent_of_valid.toFixed(1) + "%"
+          result_value = result_value + "*"
         }
+        if (previous_result.was_different_party) {
+          result_value = result_value + "†"
+        }
+        return result_value
       } else {
         return "DNS"
       }
