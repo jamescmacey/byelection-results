@@ -5,29 +5,29 @@
       <span v-if="electionDayResults && electionDayResults.total_issued_ballot_papers > 0">
         <button @click="$emit('view-place',electionDayResults.voting_place_id)" class="btn btn-theme2 btn-sm rounded-0">View results</button>
       </span>
-      <span v-else-if="electionDayResults && electionDayResults.total_issued_ballot_papers == 0">Counting</span>
-      <span v-else-if="electionDayResults == null">Not open</span>
+      <span v-else-if="electionDayResults && electionDayResults.total_issued_ballot_papers == 0">-</span>
+      <span v-else-if="electionDayResults == null">-</span>
     </td> 
     <td v-if="type == 'place'">
       <span v-if="advanceVotingResults && advanceVotingResults.total_issued_ballot_papers > 0">
         <button @click="$emit('view-place',advanceVotingResults.voting_place_id)" class="btn btn-theme2 btn-sm rounded-0">View results</button>
       </span>
-      <span v-else-if="advanceVotingResults && advanceVotingResults.total_issued_ballot_papers == 0">Counting</span>
-      <span v-else-if="advanceVotingResults == null">Not open</span>
+      <span v-else-if="advanceVotingResults && advanceVotingResults.total_issued_ballot_papers == 0">-</span>
+      <span v-else-if="advanceVotingResults == null">-</span>
     </td> 
     <td v-if="type == 'place'">
       <span v-if="mobileResults && mobileResults.total_issued_ballot_papers > 0">
         <button @click="$emit('view-place',mobileResults.voting_place_id)" class="btn btn-theme2 btn-sm rounded-0">View results</button>
       </span>
-      <span v-else-if="mobileResults && mobileResults.total_issued_ballot_papers == 0">Counting</span>
-      <span v-else-if="mobileResults == null">Not open</span>
+      <span v-else-if="mobileResults && mobileResults.total_issued_ballot_papers == 0">-</span>
+      <span v-else-if="mobileResults == null">-</span>
     </td> 
     <td v-if="type == 'special'">
       <span v-if="specialResults && specialResults.total_issued_ballot_papers > 0">
         <button @click="$emit('view-place',specialResults.voting_place_id)" class="btn btn-theme2 btn-sm rounded-0">View results</button>
       </span>
-      <span v-else-if="specialResults && specialResults.total_issued_ballot_papers == 0">Counting</span>
-      <span v-else-if="specialResults == null">Not open</span>
+      <span v-else-if="specialResults && specialResults.total_issued_ballot_papers == 0">-</span>
+      <span v-else-if="specialResults == null">-</span>
     </td>
   </tr>
 </template>
