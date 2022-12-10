@@ -152,7 +152,7 @@ export default {
   data() {
     return {
       electionStarted: false,
-      goLive: moment("2022-12-10T19:00:00+12:00"),
+      goLive: moment("2022-12-10T19:00:00+13:00"),
       remainingTime: "--h --m --s",
       countdownInterval: null,
       refreshInterval: null,
