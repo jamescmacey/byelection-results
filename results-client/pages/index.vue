@@ -96,7 +96,7 @@ export default {
   head: {
     title: "Hamilton West by-election results — WhereTheyStand",
     meta: [
-      {name: "twitter:image", content: "https://storage.googleapis.com/wheretheystand-nz/nzpm_app/twitter_2_1.jpeg"},
+      {name: "twitter:image", content: "https://storage.googleapis.com/wheretheystand-nz/nzpm_app/hamwest_results_card.png"},
       {name: "twitter:card", content: "summary_large_image"},
       {name: "twitter:image:alt", content: "WhereTheyStand"},
       {name: "twitter:title", content: "Election results — WhereTheyStand"},
@@ -105,7 +105,7 @@ export default {
       {name: "og:site_name", content: "WhereTheyStand"},
       {name: "og:locale", content: "en_NZ"},
       {name: "og:title", content: "WhereTheyStand"},
-      {name: "og:image", content: "https://storage.googleapis.com/wheretheystand-nz/nzpm_app/twitter_2_1.jpeg"},
+      {name: "og:image", content: "https://storage.googleapis.com/wheretheystand-nz/nzpm_app/hamwest_results_card.png"},
       {name: "og:description", content: "See Hamitlon West by-election results as they become available."},
       {charset: "utf-8"},
       {name: "theme-color", content: "#58787f"}
