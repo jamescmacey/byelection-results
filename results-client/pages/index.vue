@@ -249,7 +249,7 @@ export default {
     },
     async getIsAlive () {
       if (!this.isAlive) {
-        var data = await $fetch('https://api.election.wheretheystand.nz/is-alive/')
+        var data = await $fetch('https://api.election.wheretheystand.nz/legacy/tauranga/is-alive/')
         this.lastCheckedIsAlive = moment().tz("Pacific/Auckland")
         if (data.is_alive == true) {
           this.isAlive = true
@@ -258,7 +258,7 @@ export default {
     },
     async getStatics () {
       this.loadingIncrement = this.loadingIncrement + 1;
-      var data = await $fetch('https://api.election.wheretheystand.nz/config-data/')
+      var data = await $fetch('https://api.election.wheretheystand.nz/legacy/tauranga/config-data/')
       this.candidates = data.candidates
       this.parties = data.parties
       this.electorates = data.electorates
@@ -271,7 +271,7 @@ export default {
     }, 
     async getResults () {
       this.loadingIncrement = this.loadingIncrement + 1;
-      var data = await $fetch('https://api.election.wheretheystand.nz/results/')
+      var data = await $fetch('https://api.election.wheretheystand.nz/legacy/tauranga/results/')
       this.election = data.election
       this.results = data.results[0]
       this.results.candidate_votes.sort((a, b) => { 
