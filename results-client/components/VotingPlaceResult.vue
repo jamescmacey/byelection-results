@@ -12,16 +12,16 @@
                     Candidate
                 </th>
                 <th class="ps-3 text-end" v-if="electionDayResults && (electionDayResults.total_issued_ballot_papers > 0)">
-                    Election day votes
+                    Votes (set A)
                 </th>
                 <th class="ps-3 text-end" v-if="advanceVotingResults && (advanceVotingResults.total_issued_ballot_papers > 0)">
-                    Advance voting votes
+                    Votes (set B)
                 </th>
                 <th class="ps-3 text-end" v-if="mobileResults && (mobileResults.total_issued_ballot_papers > 0)">
-                    Mobile votes
+                    Votes (set C)
                 </th>
                 <th class="ps-3 text-end" v-if="specialResults && (specialResults.total_issued_ballot_papers > 0)">
-                    Special votes
+                    Votes (set D)
                 </th>
                 <th class="ps-3 text-end">
                     Total votes
@@ -145,7 +145,7 @@ export default {
   },
   computed: {
     electionDayResults() {
-      var filtered = this.results.filter(c => (c.id == this.focusPlaceId && c.voting_place_id < 100))
+      var filtered = this.results.filter(c => (c.id == this.focusPlaceId))
       if ((filtered.length) > 0) {
         return filtered[0]
       } else {
@@ -153,25 +153,25 @@ export default {
       }
     },
     advanceVotingResults() {
-      var filtered = this.results.filter(c => (c.id == this.focusPlaceId && c.voting_place_id < 300 && c.voting_place_id >= 200))
-      if ((filtered.length) > 0) {
-        return filtered[0]
+      var filtered = this.results.filter(c => (c.id == this.focusPlaceId))
+      if ((filtered.length) > 1) {
+        return filtered[1]
       } else {
         return null
       }
     },
     mobileResults() {
-      var filtered = this.results.filter(c => (c.id == this.focusPlaceId && c.voting_place_id < 400 && c.voting_place_id >= 300))
-      if ((filtered.length) > 0) {
-        return filtered[0]
+      var filtered = this.results.filter(c => (c.id == this.focusPlaceId))
+      if ((filtered.length) > 2) {
+        return filtered[2]
       } else {
         return null
       }
     },
     specialResults() {
-      var filtered = this.results.filter(c => (c.id == this.focusPlaceId && c.voting_place_id < 500 && c.voting_place_id >= 400))
-      if ((filtered.length) > 0) {
-        return filtered[0]
+      var filtered = this.results.filter(c => (c.id == this.focusPlaceId))
+      if ((filtered.length) > 3) {
+        return filtered[3]
       } else {
         return null
       }
