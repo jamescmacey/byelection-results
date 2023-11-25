@@ -64,11 +64,6 @@
 </template>
 
 <style scoped>
-#footer-name {
-  position : absolute;
-  bottom   : 0;
-}
-
 #footer-logo, .navbar-brand {
   font-family: 'Mulish', 'sans-serif';
 }
