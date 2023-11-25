@@ -32,7 +32,7 @@
             <a target="_blank" href="https://wheretheystand.nz/" class="navbar-brand text-theme1 pe-3 border-end border-primary border-1">WhereTheyStand</a>
             <ul class="nav me-auto">
               <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://wheretheystand.nz/docs/wheretheystand-election-results-privacy-and-terms/">Privacy and Terms</a>
+                <a class="nav-link" target="_blank" href="https://wheretheystand.nz/terms">Privacy and Terms</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link disabled" target="_blank" href="#">Last updated {{ lastUpdatedText }}</a>
@@ -57,7 +57,7 @@
     <div class="text-dark text-center" id="footer" v-if="(!staticsLoaded || !resultsLoaded)">
       <div id="footer-name" class="col-12 mb-3">
         <a class="footer-link" href="https://wheretheystand.nz/" target="_blank"><h3 id="footer-logo" class="text-center">WhereTheyStand</h3></a> 
-        <a class="footer-link" href="https://wheretheystand.nz/docs/wheretheystand-election-results-privacy-and-terms/">Privacy and Terms</a>
+        <a class="footer-link" href="https://wheretheystand.nz/terms">Privacy and Terms</a>
       </div>
     </div>
   </div>
@@ -128,7 +128,7 @@ export default {
   data() {
     return {
       electionStarted: false,
-      goLive: moment("2023-11-25T19:00:00+13:00"),
+      goLive: moment("2023-11-24T19:00:00+13:00"),
       remainingTime: "--h --m --s",
       countdownInterval: null,
       refreshInterval: null,
@@ -205,15 +205,20 @@ export default {
   },
   methods: {
     startRefreshInterval () {
-      this.isAliveInterval = setInterval(function () {
-            this.getIsAlive();
-            if (this.isAlive == true) {
-              clearInterval(this.isAliveInterval);
-              this.getStatics();
-              this.getResults();
-            }
-      }.bind(this), 10000);
-
+      this.getIsAlive();
+      if (this.isAlive == true) {
+          this.getStatics();
+          this.getResults();
+      } else {
+        this.isAliveInterval = setInterval(function () {
+              this.getIsAlive();
+              if (this.isAlive == true) {
+                clearInterval(this.isAliveInterval);
+                this.getStatics();
+                this.getResults();
+              }
+        }.bind(this), 10000);
+      }
 
       this.refreshInterval = setInterval(function () {
         if (this.isAlive) {
@@ -249,7 +254,7 @@ export default {
     },
     async getIsAlive () {
       if (!this.isAlive) {
-        var data = await $fetch('https://api.election.wheretheystand.nz/legacy/port-waikato/is-alive/')
+        var data = await $fetch('https://api.election.wheretheystand.nz/legacy/hamilton/is-alive/')
         this.lastCheckedIsAlive = moment().tz("Pacific/Auckland")
         if (data.is_alive == true) {
           this.isAlive = true
@@ -258,7 +263,7 @@ export default {
     },
     async getStatics () {
       this.loadingIncrement = this.loadingIncrement + 1;
-      var data = await $fetch('https://api.election.wheretheystand.nz/legacy/port-waikato/config-data/')
+      var data = await $fetch('https://api.election.wheretheystand.nz/legacy/hamilton/config-data/')
       this.candidates = data.candidates
       this.parties = data.parties
       this.electorates = data.electorates
@@ -271,7 +276,7 @@ export default {
     }, 
     async getResults () {
       this.loadingIncrement = this.loadingIncrement + 1;
-      var data = await $fetch('https://api.election.wheretheystand.nz/legacy/port-waikato/results/')
+      var data = await $fetch('https://api.election.wheretheystand.nz/legacy/hamilton/results/')
       this.election = data.election
       this.results = data.results[0]
       this.results.candidate_votes.sort((a, b) => { 
