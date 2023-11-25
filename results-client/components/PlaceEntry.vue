@@ -26,26 +26,26 @@
           <FontAwesomeIcon v-if="electionDayResults.total_issued_ballot_papers > 0" title="Counted"
             :icon="['fas', 'check']"></FontAwesomeIcon>
           <FontAwesomeIcon v-else title="Counting" :icon="['fas', 'hourglass']"></FontAwesomeIcon>
-          Election day results
+          Results
         </span>
         <span class="text-muted me-3 status" v-if="advanceVotingResults">
           <FontAwesomeIcon v-if="advanceVotingResults.total_issued_ballot_papers > 0" title="Counted"
             :icon="['fas', 'check']"></FontAwesomeIcon>
           <FontAwesomeIcon v-else title="Counting" :icon="['fas', 'hourglass']"></FontAwesomeIcon>
-          Advance voting results
+          Results (set B)
         </span>
         <div class="text-muted me-3 status" v-if="mobileResults">
           <FontAwesomeIcon v-if="mobileResults.total_issued_ballot_papers > 0" title="Counted" :icon="['fas', 'check']">
           </FontAwesomeIcon>
           <FontAwesomeIcon v-else title="Counting" :icon="['fas', 'hourglass']"></FontAwesomeIcon>
-          Mobile voting results
+          Results (set C)
         </div>
         <div class="text-muted me-3 status" v-if="specialResults">
           <FontAwesomeIcon v-if="specialResults.total_issued_ballot_papers > 0" title="Counted"
             :icon="['fas', 'check']">
           </FontAwesomeIcon>
           <FontAwesomeIcon v-else title="Counting" :icon="['fas', 'hourglass']"></FontAwesomeIcon>
-          Special votes results
+          Results (set D)
         </div>
       </div>
     </div>
@@ -168,7 +168,7 @@ export default {
       }
     },
     electionDayResults() {
-      var filtered = this.results.filter(c => (c.id == this.placeId && c.voting_place_id < 100))
+      var filtered = this.results.filter(c => (c.id == this.placeId))
       if ((filtered.length) > 0) {
         return filtered[0]
       } else {
@@ -176,25 +176,25 @@ export default {
       }
     },
     advanceVotingResults() {
-      var filtered = this.results.filter(c => (c.id == this.placeId && c.voting_place_id < 300 && c.voting_place_id >= 200))
-      if ((filtered.length) > 0) {
-        return filtered[0]
+      var filtered = this.results.filter(c => (c.id == this.placeId))
+      if ((filtered.length) > 1) {
+        return filtered[1]
       } else {
         return null
       }
     },
     mobileResults() {
-      var filtered = this.results.filter(c => (c.id == this.placeId && c.voting_place_id < 400 && c.voting_place_id >= 300))
-      if ((filtered.length) > 0) {
-        return filtered[0]
+      var filtered = this.results.filter(c => (c.id == this.placeId))
+      if ((filtered.length) > 2) {
+        return filtered[2]
       } else {
         return null
       }
     },
     specialResults() {
-      var filtered = this.results.filter(c => (c.id == this.placeId && c.voting_place_id < 500 && c.voting_place_id >= 400))
-      if ((filtered.length) > 0) {
-        return filtered[0]
+      var filtered = this.results.filter(c => (c.id == this.placeId))
+      if ((filtered.length) > 3) {
+        return filtered[3]
       } else {
         return null
       }
