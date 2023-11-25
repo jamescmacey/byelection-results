@@ -21,7 +21,7 @@
             </PlacesTable>
             <Card class="col-12 d-lg-none d-xl-none d-md-none text-center">
               <a class="footer-link" href="https://wheretheystand.nz/" target="_blank"><h3 id="footer-logo" class="text-center">WhereTheyStand</h3></a> 
-              <a class="" href="https://wheretheystand.nz/docs/wheretheystand-election-results-privacy-and-terms/">Privacy and Terms</a>
+              <a class="" href="https://wheretheystand.nz/terms/">Privacy and Terms</a>
               <p>Last updated {{ lastUpdatedText }}</p>
             </Card>
           </div>
@@ -128,7 +128,7 @@ export default {
   data() {
     return {
       electionStarted: false,
-      goLive: moment("2023-11-24T19:00:00+13:00"),
+      goLive: moment("2023-11-25T19:00:00+13:00"),
       remainingTime: "--h --m --s",
       countdownInterval: null,
       refreshInterval: null,
