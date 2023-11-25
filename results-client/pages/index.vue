@@ -94,19 +94,19 @@ import LoadingPage from '../components/LoadingPage.vue'
 
 export default {
   head: {
-    title: "Hamilton West by-election results — WhereTheyStand",
+    title: "Port Waikato by-election results — WhereTheyStand",
     meta: [
-      {name: "twitter:image", content: "https://storage.googleapis.com/wheretheystand-nz/nzpm_app/hamwest_results_card.png"},
+      {name: "twitter:image", content: "https://storage.googleapis.com/wheretheystand-nz/elections/cards/by2023_results.png"},
       {name: "twitter:card", content: "summary_large_image"},
       {name: "twitter:image:alt", content: "WhereTheyStand"},
       {name: "twitter:title", content: "Election results — WhereTheyStand"},
-      {name: "twitter.description", content: "See Hamilton West by-election results as they become available."},
+      {name: "twitter.description", content: "See Port Waikato by-election results as they become available."},
       {name: "og:image:alt", content: "WhereTheyStand"},
       {name: "og:site_name", content: "WhereTheyStand"},
       {name: "og:locale", content: "en_NZ"},
       {name: "og:title", content: "WhereTheyStand"},
-      {name: "og:image", content: "https://storage.googleapis.com/wheretheystand-nz/nzpm_app/hamwest_results_card.png"},
-      {name: "og:description", content: "See Hamitlon West by-election results as they become available."},
+      {name: "og:image", content: "https://storage.googleapis.com/wheretheystand-nz/elections/cards/by2023_results.png"},
+      {name: "og:description", content: "See Port Waikato by-election results as they become available."},
       {charset: "utf-8"},
       {name: "theme-color", content: "#58787f"}
     ],
@@ -128,7 +128,7 @@ export default {
   data() {
     return {
       electionStarted: false,
-      goLive: moment("2022-12-10T19:00:00+13:00"),
+      goLive: moment("2023-11-25T19:00:00+13:00"),
       remainingTime: "--h --m --s",
       countdownInterval: null,
       refreshInterval: null,
@@ -149,9 +149,9 @@ export default {
       config: {},
       lastUpdatedTime: moment(),
       lastUpdatedText: "never",
-      electionName: "2022 Hamilton West by-election",
-      electionYear: "2022",
-      electionLocationType: "Hamilton West by-election",
+      electionName: "2023 Port Waikato by-election",
+      electionYear: "2023",
+      electionLocationType: "Port Waikato by-election",
       candidatesSortOrder: [],
       isAlive: true,
       lastCheckedIsAlive: moment(),
@@ -249,7 +249,7 @@ export default {
     },
     async getIsAlive () {
       if (!this.isAlive) {
-        var data = await $fetch('https://api.election.wheretheystand.nz/legacy/hamilton/is-alive/')
+        var data = await $fetch('https://api.election.wheretheystand.nz/legacy/port-waikato/is-alive/')
         this.lastCheckedIsAlive = moment().tz("Pacific/Auckland")
         if (data.is_alive == true) {
           this.isAlive = true
@@ -258,7 +258,7 @@ export default {
     },
     async getStatics () {
       this.loadingIncrement = this.loadingIncrement + 1;
-      var data = await $fetch('https://api.election.wheretheystand.nz/legacy/hamilton/config-data/')
+      var data = await $fetch('https://api.election.wheretheystand.nz/legacy/port-waikato/config-data/')
       this.candidates = data.candidates
       this.parties = data.parties
       this.electorates = data.electorates
@@ -271,7 +271,7 @@ export default {
     }, 
     async getResults () {
       this.loadingIncrement = this.loadingIncrement + 1;
-      var data = await $fetch('https://api.election.wheretheystand.nz/legacy/hamilton/results/')
+      var data = await $fetch('https://api.election.wheretheystand.nz/legacy/port-waikato/results/')
       this.election = data.election
       this.results = data.results[0]
       this.results.candidate_votes.sort((a, b) => { 
