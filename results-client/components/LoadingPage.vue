@@ -17,7 +17,7 @@
                 </li>
               </ul>
             </p>
-            <p><strong>If this message appears after 7pm on election night, simply refresh the page. A known bug on this site is that sometimes your browser won't establish an HTTPS connection on the first page load, which stops the site from working. Refreshing solves this.</strong></p>
+            <p><strong>If this message appears after 7pm on election night, simply refresh the page.</strong></p>
           </div>
           <hr>
           <h5 class="text-uppercased">Voting closes in:</h5>
