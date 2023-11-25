@@ -11,7 +11,7 @@
     </ul>
     <mapbox-map v-if="(uniquePlaces.length > 0)" v-show="viewMode == 'map'"
       accessToken="pk.eyJ1IjoiamFtZXNjbWFjZXkiLCJhIjoiY2xiN2VhYzVqMGE5YTN2bnhuM3l6d3pxbyJ9.CN_c4Tf7wXMtxyLKWrtvJg"
-      height="500px" mapStyle="mapbox://styles/jamescmacey/clb7ctet9000714mxazwofetq"
+      height="500px" mapStyle="mapbox://styles/jamescmacey/clpdh34om004801ol0sxucb2d"
       :customAttribution="['Representation Commission', 'Stats NZ', 'Electoral Commission']">
       <PlaceMarker @clicked-marker="clickedMarker" v-for="placeId in uniquePlaces" :key="placeId" :placeId="placeId"
         :results="results.voting_place_results" :config="config" :votingPlaces="votingPlaces" type="place">
