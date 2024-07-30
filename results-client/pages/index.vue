@@ -249,7 +249,8 @@ export default {
     },
     async getIsAlive () {
       if (!this.isAlive) {
-        var data = await $fetch('https://api.election.wheretheystand.nz/legacy/port-waikato/is-alive/')
+        var data = await $fetch('https://storage.googleapis.com/wheretheystand-elections/legacy/port-waikato-2023/is-alive.json')
+        var data = await JSON.parse(data);
         this.lastCheckedIsAlive = moment().tz("Pacific/Auckland")
         if (data.is_alive == true) {
           this.isAlive = true
@@ -258,7 +259,8 @@ export default {
     },
     async getStatics () {
       this.loadingIncrement = this.loadingIncrement + 1;
-      var data = await $fetch('https://api.election.wheretheystand.nz/legacy/port-waikato/config-data/')
+      var data = await $fetch('https://storage.googleapis.com/wheretheystand-elections/legacy/port-waikato-2023/config-data.json')
+      var data = await JSON.parse(data);
       this.candidates = data.candidates
       this.parties = data.parties
       this.electorates = data.electorates
@@ -271,7 +273,8 @@ export default {
     }, 
     async getResults () {
       this.loadingIncrement = this.loadingIncrement + 1;
-      var data = await $fetch('https://api.election.wheretheystand.nz/legacy/port-waikato/results/')
+      var data = await $fetch('https://storage.googleapis.com/wheretheystand-elections/legacy/port-waikato-2023/results.json')
+      var data = await JSON.parse(data);
       this.election = data.election
       this.results = data.results[0]
       this.results.candidate_votes.sort((a, b) => { 
